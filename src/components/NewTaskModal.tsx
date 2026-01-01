@@ -117,25 +117,28 @@ export default function NewTaskModal({
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Category
           </label>
-          <select
-            value={categoryId}
-            onChange={(e) => {
-              if (e.target.value === "__new__") {
-                setShowNewCategory(true);
-              } else {
-                setCategoryId(e.target.value);
-              }
-            }}
-            className="w-full px-3 py-2 border border-gray-200 rounded-xl bg-white text-gray-900 focus:ring-2 focus:ring-[#1a5c5c] focus:border-transparent"
-          >
-            <option value="">Select category...</option>
-            {categories.map((cat) => (
-              <option key={cat.id} value={cat.id}>
-                {cat.name}
-              </option>
-            ))}
-            <option value="__new__">+ Add new category...</option>
-          </select>
+          <div className="flex gap-2">
+            <select
+              value={categoryId}
+              onChange={(e) => setCategoryId(e.target.value)}
+              className="flex-1 px-3 py-2 border border-gray-200 rounded-xl bg-white text-gray-900 focus:ring-2 focus:ring-[#1a5c5c] focus:border-transparent"
+            >
+              <option value="">Select category...</option>
+              {categories.map((cat) => (
+                <option key={cat.id} value={cat.id}>
+                  {cat.name}
+                </option>
+              ))}
+            </select>
+            <button
+              type="button"
+              onClick={() => setShowNewCategory(true)}
+              className="px-3 py-2 bg-[#1a5c5c] text-white rounded-xl flex items-center gap-1 text-sm font-medium whitespace-nowrap"
+            >
+              <Plus size={16} />
+              Add
+            </button>
+          </div>
         </div>
 
         {/* Inline new category form */}
@@ -193,25 +196,28 @@ export default function NewTaskModal({
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Assigned To
           </label>
-          <select
-            value={assigneeId}
-            onChange={(e) => {
-              if (e.target.value === "__new__") {
-                setShowNewPerson(true);
-              } else {
-                setAssigneeId(e.target.value);
-              }
-            }}
-            className="w-full px-3 py-2 border border-gray-200 rounded-xl bg-white text-gray-900 focus:ring-2 focus:ring-[#1a5c5c] focus:border-transparent"
-          >
-            <option value="">Who is responsible?</option>
-            {people.map((person) => (
-              <option key={person.id} value={person.id}>
-                {person.emoji} {person.name}
-              </option>
-            ))}
-            <option value="__new__">+ Add new person...</option>
-          </select>
+          <div className="flex gap-2">
+            <select
+              value={assigneeId}
+              onChange={(e) => setAssigneeId(e.target.value)}
+              className="flex-1 px-3 py-2 border border-gray-200 rounded-xl bg-white text-gray-900 focus:ring-2 focus:ring-[#1a5c5c] focus:border-transparent"
+            >
+              <option value="">Who is responsible?</option>
+              {people.map((person) => (
+                <option key={person.id} value={person.id}>
+                  {person.emoji} {person.name}
+                </option>
+              ))}
+            </select>
+            <button
+              type="button"
+              onClick={() => setShowNewPerson(true)}
+              className="px-3 py-2 bg-[#34c759] text-white rounded-xl flex items-center gap-1 text-sm font-medium whitespace-nowrap"
+            >
+              <Plus size={16} />
+              Add
+            </button>
+          </div>
         </div>
 
         {/* Inline new person form */}

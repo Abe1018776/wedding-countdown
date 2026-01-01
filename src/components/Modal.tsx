@@ -49,7 +49,7 @@ export default function Modal({ isOpen, onClose, title, children, dir = "rtl" }:
             </div>
             
             {/* Content */}
-            <div className="p-4 max-h-[70vh] overflow-y-auto">{children}</div>
+            <div className="p-4 max-h-[70vh] overflow-y-auto overflow-x-visible">{children}</div>
           </motion.div>
         </motion.div>
       )}
