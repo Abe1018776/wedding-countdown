@@ -10,6 +10,8 @@ import UpdateItem, { Update } from "./UpdateItem";
 interface LiveFeedProps {
   updates: Update[];
   onAddUpdate?: () => void;
+  onEditUpdate?: (update: Update) => void;
+  onDeleteUpdate?: (updateId: string) => void;
   typingUser?: string | null;
 }
 
@@ -39,7 +41,7 @@ function formatRelativeTime(date: Date): string {
   }
 }
 
-export default function LiveFeed({ updates, onAddUpdate, typingUser }: LiveFeedProps) {
+export default function LiveFeed({ updates, onAddUpdate, onEditUpdate, onDeleteUpdate, typingUser }: LiveFeedProps) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [relativeTimeKeys, setRelativeTimeKeys] = useState(0);
 
@@ -106,6 +108,8 @@ export default function LiveFeed({ updates, onAddUpdate, typingUser }: LiveFeedP
               key={`${update.id}-${relativeTimeKeys}`}
               update={update}
               relativeTime={formatRelativeTime(update.timestamp)}
+              onEdit={onEditUpdate}
+              onDelete={onDeleteUpdate}
             />
           ))}
         </AnimatePresence>

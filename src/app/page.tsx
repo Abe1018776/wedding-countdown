@@ -12,6 +12,7 @@ import LiveFeed from "@/components/LiveFeed";
 import NewTaskModal from "@/components/NewTaskModal";
 import NewPersonModal from "@/components/NewPersonModal";
 import NewUpdateModal from "@/components/NewUpdateModal";
+import EditUpdateModal, { UpdateData } from "@/components/EditUpdateModal";
 import GoLiveModal from "@/components/GoLiveModal";
 import WeddingHeader from "@/components/WeddingHeader";
 import InvitationCard from "@/components/InvitationCard";
@@ -67,8 +68,10 @@ function Dashboard() {
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [showGoLiveModal, setShowGoLiveModal] = useState(false);
   const [showEditTaskModal, setShowEditTaskModal] = useState(false);
+  const [showEditUpdateModal, setShowEditUpdateModal] = useState(false);
   const [selectedPerson, setSelectedPerson] = useState<Person | null>(null);
   const [selectedTask, setSelectedTask] = useState<TaskCardTask | null>(null);
+  const [selectedUpdate, setSelectedUpdate] = useState<UpdateData | null>(null);
   const [showFinale, setShowFinale] = useState(false);
   const [hasShownFinale, setHasShownFinale] = useState(false);
 
@@ -114,6 +117,7 @@ function Dashboard() {
       const person = getPersonById(u.person_id);
       return {
         id: u.id,
+        personId: u.person_id,
         personName: person?.name || "אַנאָנים",
         message: u.message,
         timestamp: u.created_at,
@@ -238,6 +242,34 @@ function Dashboard() {
     dispatch({ type: "DELETE_TASK", payload: taskId });
   };
 
+  const handleEditUpdate = (update: UpdateItemType) => {
+    setSelectedUpdate({
+      id: update.id,
+      personId: update.personId || "",
+      message: update.message,
+      type: update.type,
+    });
+    setShowEditUpdateModal(true);
+  };
+
+  const handleSaveUpdate = (updateId: string, data: { personId: string; message: string; type: "update" | "completed" | "milestone" }) => {
+    dispatch({
+      type: "UPDATE_UPDATE",
+      payload: {
+        id: updateId,
+        data: {
+          person_id: data.personId,
+          message: data.message,
+          type: data.type,
+        },
+      },
+    });
+  };
+
+  const handleDeleteUpdate = (updateId: string) => {
+    dispatch({ type: "DELETE_UPDATE", payload: updateId });
+  };
+
   return (
     <div className="min-h-screen bg-wedding" dir="rtl">
       {/* Sticky Progress Header */}
@@ -284,6 +316,8 @@ function Dashboard() {
           <LiveFeed
             updates={updatesForFeed}
             onAddUpdate={() => setShowUpdateModal(true)}
+            onEditUpdate={handleEditUpdate}
+            onDeleteUpdate={handleDeleteUpdate}
           />
         </section>
       </div>
@@ -323,6 +357,18 @@ function Dashboard() {
         onClose={() => setShowUpdateModal(false)}
         onSubmit={handleAddUpdate}
         onAddPerson={handleAddPerson}
+        people={peopleForModal}
+      />
+
+      <EditUpdateModal
+        isOpen={showEditUpdateModal}
+        onClose={() => {
+          setShowEditUpdateModal(false);
+          setSelectedUpdate(null);
+        }}
+        update={selectedUpdate}
+        onSave={handleSaveUpdate}
+        onDelete={handleDeleteUpdate}
         people={peopleForModal}
       />
 

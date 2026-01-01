@@ -23,6 +23,7 @@ type Action =
   | { type: 'DELETE_TASK'; payload: string }
   | { type: 'MOVE_TASK'; payload: { id: string; stage: Task['stage'] } }
   | { type: 'ADD_UPDATE'; payload: Update }
+  | { type: 'UPDATE_UPDATE'; payload: { id: string; data: Partial<Update> } }
   | { type: 'DELETE_UPDATE'; payload: string }
 
 const initialSettings: Settings = {
@@ -132,6 +133,13 @@ function weddingReducer(state: WeddingState, action: Action): WeddingState {
       }
     case 'ADD_UPDATE':
       return { ...state, updates: [action.payload, ...state.updates] }
+    case 'UPDATE_UPDATE':
+      return {
+        ...state,
+        updates: state.updates.map((u) =>
+          u.id === action.payload.id ? { ...u, ...action.payload.data } : u
+        ),
+      }
     case 'DELETE_UPDATE':
       return { ...state, updates: state.updates.filter((u) => u.id !== action.payload) }
     default:
