@@ -2,8 +2,8 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "חתונה בבית לאנדא - קאָונטדאַון",
-  description: "קאָונטדאַון צו דער חתונה פון יואל און עדן",
+  title: "קאונטדאון צו די חתונה פון אלי' לאנדא",
+  description: "קאונטדאון צו די חתונה פון אלי' לאנדא",
   icons: {
     icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>",
   },
