@@ -95,9 +95,9 @@ export default function InvitationCard() {
           download="wedding.ics"
           className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-medium transition-all"
           style={{
-            background: "rgba(201, 162, 39, 0.2)",
-            border: "1px solid #c9a227",
-            color: "#e0cfa0",
+            background: "transparent",
+            border: "1.5px solid rgba(201, 162, 39, 0.6)",
+            color: "#c9a227",
           }}
         >
           <span>📅</span>
@@ -109,9 +109,9 @@ export default function InvitationCard() {
           rel="noopener noreferrer"
           className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-medium transition-all"
           style={{
-            background: "rgba(201, 162, 39, 0.2)",
-            border: "1px solid #c9a227",
-            color: "#e0cfa0",
+            background: "transparent",
+            border: "1.5px solid rgba(201, 162, 39, 0.6)",
+            color: "#c9a227",
           }}
         >
           <span>📍</span>
