@@ -74,21 +74,30 @@ export default function LiveFeed({ updates, onAddUpdate, onEditUpdate, onDeleteU
           <span className="text-xs font-medium text-red-400 uppercase tracking-wider">LIVE</span>
         </div>
         <div className="relative overflow-hidden whitespace-nowrap">
-          <motion.div
-            className="inline-flex"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-          >
-            {[...Array(4)].map((_, i) => (
+          <div className="inline-flex animate-marquee-rtl">
+            {[...Array(6)].map((_, i) => (
               <span
                 key={i}
-                className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-300 to-amber-200 mx-8"
+                className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-300 to-amber-200 mx-6 flex-shrink-0"
                 style={{ fontFamily: "'David Libre', 'Frank Ruhl Libre', serif" }}
               >
-                {marqueeText} ✦ {marqueeText} ✦
+                ✦ {marqueeText} ✦ {marqueeText}
               </span>
             ))}
-          </motion.div>
+          </div>
+          <style jsx>{`
+            @keyframes marquee-rtl {
+              0% {
+                transform: translateX(0%);
+              }
+              100% {
+                transform: translateX(50%);
+              }
+            }
+            .animate-marquee-rtl {
+              animation: marquee-rtl 20s linear infinite;
+            }
+          `}</style>
         </div>
       </div>
 
