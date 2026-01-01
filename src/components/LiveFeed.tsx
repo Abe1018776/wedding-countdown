@@ -58,7 +58,7 @@ export default function LiveFeed({ updates, onAddUpdate, onEditUpdate, onDeleteU
     }
   }, [updates.length]);
 
-  const marqueeText = "לייוו אפדיעטס";
+  const marqueeText = "לייוו אפדעיטס";
 
   return (
     <div className="glass-card overflow-hidden" dir="rtl">
