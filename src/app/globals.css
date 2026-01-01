@@ -3,21 +3,135 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Elegant Wedding Theme */
+  --teal-deep: #1a5c5c;
+  --teal-dark: #143c37;
+  --teal-medium: #225555;
+  --gold: #c9a227;
+  --gold-rich: #d4af37;
+  --gold-light: #e0cfa0;
+  --cream: #f8f5f0;
+  --ivory: #faf8f3;
+  --charcoal: #3a3a3a;
+  --white: #ffffff;
+  
+  --background: var(--cream);
+  --foreground: var(--charcoal);
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Elegant background gradient */
+.bg-wedding {
+  background: linear-gradient(
+    135deg,
+    var(--cream) 0%,
+    var(--ivory) 50%,
+    var(--cream) 100%
+  );
+}
+
+/* Elegant glass card with gold accent */
+.glass-card {
+  @apply rounded-2xl;
+  background: var(--white);
+  border: 1px solid rgba(201, 162, 39, 0.2);
+  box-shadow: 
+    0 4px 24px rgba(26, 92, 92, 0.08),
+    0 1px 3px rgba(201, 162, 39, 0.1);
+}
+
+/* Teal card */
+.teal-card {
+  @apply rounded-2xl;
+  background: linear-gradient(135deg, var(--teal-deep) 0%, var(--teal-dark) 100%);
+  border: 2px solid var(--gold);
+  box-shadow: 0 8px 32px rgba(20, 60, 55, 0.25);
+}
+
+/* Gold text gradient */
+.gold-text {
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-rich) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Button styles */
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-rich) 100%);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(201, 162, 39, 0.3);
+}
+
+.btn-gold:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(201, 162, 39, 0.4);
+}
+
+.btn-teal {
+  background: linear-gradient(135deg, var(--teal-deep) 0%, var(--teal-dark) 100%);
+  color: var(--gold-light);
+  border: 1px solid var(--gold);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-teal:hover {
+  opacity: 0.9;
+}
+
+/* Section header */
+.section-header {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--teal-deep);
+  padding: 8px 16px 6px;
+}
+
+/* Decorative flourish line */
+.flourish-line {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(26, 92, 92, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 3px;
+}
+
+/* Hide scrollbar */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 @layer utilities {

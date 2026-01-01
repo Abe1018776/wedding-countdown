@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="1080" height="1080" viewBox="0 0 1080 1080">
+  <!-- Transparent background. If you want teal, add: <rect width="1080" height="1080" fill="#0f3f3e"/> -->
+
+  <defs>
+    <!-- Logo alpha mask -->
+    <mask id="logoMask" maskUnits="userSpaceOnUse">
+      <rect width="1080" height="1080" fill="black"/>
+      <image x="292" y="216" width="496" height="648" href="logo_alpha.png"/>
+    </mask>
+
+    <!-- Diagonal shimmer gradient -->
+    <linearGradient id="shimmerGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"   stop-color="white" stop-opacity="0"/>
+      <stop offset="42%"  stop-color="white" stop-opacity="0"/>
+      <stop offset="50%"  stop-color="white" stop-opacity="0.75"/>
+      <stop offset="58%"  stop-color="white" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1.6" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Base logo -->
+  <image x="292" y="216" width="496" height="648" href="logo_alpha.png" />
+
+  <!-- Shimmer sweep (masked into logo) -->
+  <g mask="url(#logoMask)" style="mix-blend-mode:screen" opacity="0.75" filter="url(#softGlow)">
+    <rect x="-900" y="-900" width="2400" height="2400" fill="url(#shimmerGrad)">
+      <animate attributeName="x" values="-1400; 200" dur="2.8s" repeatCount="indefinite" />
+      <animate attributeName="y" values="200; -200" dur="2.8s" repeatCount="indefinite" />
+    </rect>
+  </g>
+
+  <!-- Micro glints (masked) -->
+  <g mask="url(#logoMask)" style="mix-blend-mode:screen" opacity="0.22">
+    <circle cx="420" cy="510" r="60" fill="white">
+      <animate attributeName="cx" values="410;450;410" dur="3.4s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="520;500;520" dur="3.4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.10;0.28;0.10" dur="3.4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="640" cy="595" r="72" fill="white">
+      <animate attributeName="cx" values="655;620;655" dur="3.8s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="600;575;600" dur="3.8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.08;0.22;0.08" dur="3.8s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>

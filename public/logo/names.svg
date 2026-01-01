@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="220" viewBox="0 0 900 220" aria-hidden="true">
+  <defs>
+    <linearGradient id="goldScript" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#b58b49"/>
+      <stop offset="0.55" stop-color="#e0cfa0"/>
+      <stop offset="1" stop-color="#c8a46b"/>
+    </linearGradient>
+    <mask id="revealMask">
+      <rect class="maskWipe" x="0" y="0" width="0" height="220" fill="#fff"/>
+    </mask>
+    <filter id="subtleDepth" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="1.4" flood-color="#000" flood-opacity=".15"/>
+    </filter>
+  </defs>
+
+  <!-- Placeholder path that *resembles* script; replace with real vector from logo if you have it -->
+  <g mask="url(#revealMask)" filter="url(#subtleDepth)">
+    <path class="namesPath" d="M70 140
+      C120 60, 190 60, 240 135
+      C270 180, 340 176, 380 130
+      C420 82, 470 80, 510 124
+      C560 178, 640 170, 690 110
+      C740 52, 800 64, 840 120"
+      fill="none" stroke="url(#goldScript)" stroke-width="10" stroke-linecap="round"/>
+
+    <text x="450" y="155" text-anchor="middle" font-size="54" fill="url(#goldScript)" opacity="0.0"
+      class="namesText">Ely &amp; Shindy</text>
+  </g>
+</svg>
