@@ -1,13 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 export default function WeddingHeader() {
   return (
     <header className="py-6 sm:py-8 px-4" dir="rtl">
       <div className="flex flex-col items-center">
-        {/* Logo - simple circular display */}
+        {/* Animated Logo Monogram */}
         <motion.div
           className="relative"
           initial={{ opacity: 0, scale: 0.9 }}
@@ -15,31 +14,19 @@ export default function WeddingHeader() {
           transition={{ duration: 0.6 }}
         >
           <div
-            className="relative overflow-hidden"
+            className="relative"
             style={{
-              width: "clamp(140px, 45vw, 220px)",
-              height: "clamp(140px, 45vw, 220px)",
+              width: "clamp(160px, 50vw, 280px)",
+              height: "clamp(220px, 70vw, 400px)",
             }}
           >
-            <Image
-              src="/logo/wedding_logo.jpeg"
-              alt="Wedding Logo"
-              fill
-              className="object-cover"
-              priority
-              unoptimized
+            <object
+              data="/logo/logo_monogram_animated.svg"
+              type="image/svg+xml"
+              className="w-full h-full"
+              aria-label="Wedding Monogram"
             />
           </div>
-          
-          {/* Decorative sparkle */}
-          <motion.span
-            className="absolute -top-2 left-1/2 -translate-x-1/2 text-lg sm:text-xl"
-            style={{ color: "#c9a227" }}
-            animate={{ opacity: [0.5, 1, 0.5], scale: [0.9, 1.1, 0.9] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
-            ✦
-          </motion.span>
         </motion.div>
 
         {/* Title */}
